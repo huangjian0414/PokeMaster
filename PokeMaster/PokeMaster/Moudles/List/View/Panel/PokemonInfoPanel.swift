@@ -21,10 +21,38 @@ struct PokemonInfoPanel: View {
             .frame(width: ScaleFrame(40), height: ScaleFrame(6))
             .opacity(0.2)
     }
+    /// pokemon描述文本
+    var pokemonDescription: some View {
+        Text(model.descriptionText)
+            .font(.callout)
+            .foregroundColor(Color(hex: 0x666666))
+            .fixedSize(horizontal: false, vertical: true)
+    }
     
-    
+    @State var darkBlur = false
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: ScaleFrame(20)) {
+            Button(action: {
+                self.darkBlur.toggle()
+            }) {
+                Text("切换模糊效果")
+            }
+            topIndicator
+            Header(model: model)
+            pokemonDescription
+            Divider()
+            AbilityList(model: model, abilityModels: abilities)
+        }
+        .padding(EdgeInsets(
+            top: ScaleFrame(12),
+            leading: ScaleFrame(30),
+            bottom: ScaleFrame(30),
+            trailing: ScaleFrame(30)
+            )
+        )
+            .blurBackground(style: darkBlur ? .systemMaterialDark : .systemMaterial)
+            .cornerRadius(ScaleFrame(20))
+            .fixedSize(horizontal: false, vertical: true)
     }
 }
 

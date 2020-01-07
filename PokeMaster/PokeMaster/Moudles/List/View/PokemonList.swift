@@ -12,7 +12,7 @@ struct PokemonList: View {
     /// 记录展开id
     @State var expandingIndex: Int?
     @State var searchText: String = ""
-    
+    @State var showPanel = false
     var body: some View {
         ScrollView {
             TextField ("搜索", text: $searchText)
@@ -28,7 +28,16 @@ struct PokemonList: View {
                         }
                 }
             }
-        }
+        }.overlay(
+            VStack {
+                Spacer()
+                Button("PokemonInfoPanel") {
+                    self.showPanel = true
+                }.sheet(isPresented: $showPanel) {
+                    PokemonInfoPanel(model: .sample(id: 1))
+                }
+            }.edgesIgnoringSafeArea(.bottom)
+        )
     }
 }
 
