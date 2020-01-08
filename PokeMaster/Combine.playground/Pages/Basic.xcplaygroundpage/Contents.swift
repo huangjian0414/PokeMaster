@@ -1,6 +1,6 @@
 import Foundation
 import Combine
-
+import UIKit
 //check("Empty") {
 //    Empty<Int, SampleError>()
 //}
@@ -120,13 +120,114 @@ import Combine
 //}
 
 
-check("Flat Map 3") { [["A", "B"], "C"]
-    .publisher
-    .flatMap { letter in
-        [1, 2, 3]
-            .publisher
-            .map{ "\(letter)\($0)" }
-            
-    }
+//check("Flat Map 3") { [["A", "B"], "C"]
+//    .publisher
+//    .flatMap { letter in
+//        [1, 2, 3]
+//            .publisher
+//            .map{ "\(letter)\($0)" }
+//
+//    }
+//}
 
-}
+///Subject 也是 Combine 框架中的一个协议，它为我们提供了从外界发送数据的方式,外界每次调用 send(_:) 或者 send(completion:)，对应的 Subject 就会向外发布一个 事件
+/// 两种最常用的 Subject，它们分别是 PassthroughSubject 及 CurrentValueSubject
+
+//let s1 = check("Subject") {
+//    () -> PassthroughSubject<Int, Never> in
+//    let subject = PassthroughSubject<Int, Never>()
+//    delay(1) {
+//        subject.send(1)
+//        delay(1) {
+//            subject.send(2)
+//            delay(1) {
+//                subject.send(completion: .finished) }
+//        } }
+//    return subject
+//}
+
+//let subject_example1 = PassthroughSubject<Int, Never>()
+//let subject_example2 = PassthroughSubject<Int, Never>()
+//check("Subject Order") {
+//    subject_example1.merge(with: subject_example2)
+//}
+//subject_example1.send(20)
+//subject_example2.send(1)
+//subject_example1.send(40)
+//subject_example1.send(60)
+//subject_example2.send(1)
+//subject_example1.send(80)
+//subject_example1.send(100)
+//subject_example1.send(completion: .finished)
+//subject_example2.send(completion: .finished)
+
+
+/// zip 将从两个序列中取出 index 相同的元素， 把它们组合为多元组，然后放到返回的序列中去
+//let subject1 = PassthroughSubject<Int, Never>()
+//let subject2 = PassthroughSubject<String, Never>()
+//check("Zip") {
+//    subject1.zip(subject2)
+//}
+//subject1.send(1)
+//subject2.send("A")
+//subject1.send(2)
+//subject2.send("B")
+//subject2.send("C")
+//subject2.send("D")
+//subject1.send(3)
+//subject1.send(4)
+//subject1.send(5)
+
+/// combineLatest 只要发生了新的事件，combineLatest 就把新发生的事 件值和另一个 Publisher 中当前的最新值合并
+
+//let subject3 = PassthroughSubject<String, Never>()
+//let subject4 = PassthroughSubject<String, Never>()
+//check("Combine Latest") {
+//    subject3.combineLatest(subject4)
+//}
+//subject3.send("1")
+//subject4.send("A")
+//subject3.send("2")
+//subject4.send("B")
+//subject4.send("C")
+//subject4.send("D")
+//subject3.send("3")
+//subject3.send("4")
+//subject3.send("5")
+
+
+/// 如果我们希望订阅操作和值的发布是异步行为，不在同一时间发生的话，可以使用 Future。Future 提供了一种方式，可以让我们创建一个接受未来的事件的 Publisher。
+
+/// 如果你的异步 API 有可能不发送任何一个值， 而是可能发布两个或更多的值的话，你会需要一个更加一般性的 Publisher 类型来把 指令式程序转换为响应式程序，这个类型就是 Subject
+//func loadPage(
+//    url: URL,
+//    handler: @escaping (Data?, URLResponse?, Error?) -> Void)
+//{
+//    URLSession.shared.dataTask(with: url) {
+//        data, response, error in
+//        handler(data, response, error) }.resume()
+//}
+//
+//let future = check("Future") {
+//    Future<(Data, URLResponse), Error> { promise in
+//    loadPage(url: URL(string: "https://example.com")!) { data, response, error in
+//            if let data = data, let response = response {
+//                promise(.success((data, response)))
+//            }else{
+//                promise(.failure(error!))
+//            }
+//        }
+//    }
+//}
+
+//let subject = PassthroughSubject<(), Never>()
+//let observer = NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidShowNotification, object: nil, queue: .main) {_ in subject.send()
+//}
+
+
+//let subject = PassthroughSubject<Date, Never>()
+//Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+//subject.send(Date()) }
+//let timer = check("Timer") {
+//    subject
+//}
