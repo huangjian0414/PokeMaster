@@ -115,6 +115,18 @@ import Combine
 //}
 
 
-check("Merge") {
-    [1:"A",2:"B",3:"C"].timerPublisher.merge(with: [4:"D",5:"E",6:"F"].timerPublisher)
+//check("Merge") {
+//    [1:"A",2:"B",3:"C"].timerPublisher.merge(with: [4:"D",5:"E",6:"F"].timerPublisher)
+//}
+
+
+check("Flat Map 3") { [["A", "B"], "C"]
+    .publisher
+    .flatMap { letter in
+        [1, 2, 3]
+            .publisher
+            .map{ "\(letter)\($0)" }
+            
+    }
+
 }
