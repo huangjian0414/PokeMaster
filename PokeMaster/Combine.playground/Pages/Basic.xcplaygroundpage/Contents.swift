@@ -165,12 +165,13 @@ import UIKit
 /// zip 将从两个序列中取出 index 相同的元素， 把它们组合为多元组，然后放到返回的序列中去
 //let subject1 = PassthroughSubject<Int, Never>()
 //let subject2 = PassthroughSubject<String, Never>()
-//check("Zip") {
-//    subject1.zip(subject2)
-//}
+//
 //subject1.send(1)
 //subject2.send("A")
 //subject1.send(2)
+//check("Zip") { // 晚点订阅 看看结果
+//    subject1.zip(subject2)
+//}
 //subject2.send("B")
 //subject2.send("C")
 //subject2.send("D")
@@ -182,12 +183,13 @@ import UIKit
 
 //let subject3 = PassthroughSubject<String, Never>()
 //let subject4 = PassthroughSubject<String, Never>()
-//check("Combine Latest") {
-//    subject3.combineLatest(subject4)
-//}
+//
 //subject3.send("1")
 //subject4.send("A")
 //subject3.send("2")
+//check("Combine Latest") { //晚点订阅 看看结果
+//    subject3.combineLatest(subject4)
+//}
 //subject4.send("B")
 //subject4.send("C")
 //subject4.send("D")
@@ -231,3 +233,101 @@ import UIKit
 //let timer = check("Timer") {
 //    subject
 //}
+
+
+//struct Response: Decodable {
+//    struct Args: Decodable {
+//        let foo: String
+//    }
+//    let args: Args?
+//}
+//let urlCheck = check("URL Session") {
+//    URLSession.shared.dataTaskPublisher(for: URL(string: "https://httpbin.org/get?foo=bar")!)
+//        .map{ data , _ in data}
+//        .decode(type: Response.self, decoder: JSONDecoder())
+//        .compactMap{$0.args?.foo}
+//}
+
+//let timer = Timer.publish(every: 1, on: .main, in: .default)
+//let timerCheck = check("Timer Connected") {
+//    timer
+//}
+//timer.connect()
+
+
+/// combine中 @Published把一个 class 的属性值转变为 Publisher。它同时提供了值的存储和对外的 Publisher (通过投影符号 $ 获取)
+//class Wrapper {
+//    @Published var text = "hehe"
+//}
+//var wrapper = Wrapper()
+//
+//let wrapperCheck = check("Published"){
+//    wrapper.$text
+//}
+//wrapper.text = "123"
+
+
+//class Clock {
+//    var timeString: String = "--:--:--" {
+//        didSet { print("\(timeString)") }
+//    }
+//}
+//
+//let clock = Clock()
+//let formatter = DateFormatter()
+//formatter.timeStyle = .medium
+//let timer = Timer.publish(every: 1, on: .main, in: .default)
+//var token = timer
+//    .map { formatter.string(from: $0) }
+//    .assign(to: \.timeString, on: clock)
+//timer.connect()
+
+
+//class LoadingUI {
+//    var isSuccess: Bool = false {
+//        didSet {print(isSuccess)}
+//    }
+//    var text: String = "" {
+//        didSet {print(text)}
+//    }
+//}
+
+/// 我们不想让订阅行为反复发 生 (比如上例中订阅时会发生网络请求)，而是想要共享这个 Publisher 的话，使用 share() 将它转变为引用类型的 class。
+//let dataTaskPublisher = URLSession.shared .dataTaskPublisher(for: URL(string: "https://httpbin.org/get?foo=bar")!).share()
+//
+//let isSuccess = dataTaskPublisher .map { data, response -> Bool in
+//    guard let httpRes = response as? HTTPURLResponse else {
+//        return false
+//    }
+//    return httpRes.statusCode == 200 }
+//    .replaceError(with: false)
+//let latestText = dataTaskPublisher .map{data,_ in data}
+//    .decode(type: Response.self, decoder: JSONDecoder())
+//    .compactMap { $0.args?.foo }
+//    .replaceError(with: "")
+//let ui = LoadingUI()
+//var token1 = isSuccess.assign(to: \.isSuccess, on: ui)
+//var token2 = latestText.assign(to: \.text, on: ui)
+/*
+1. 对于需要 connect 的 Publisher，在 connect 后需要保存返回的 Cancellable，
+并在合适的时候调用 cancel() 以结束事件的持续发布。
+2. 对于 sink 或 assign 的返回值，一般将其存储在实例的变量中，等待属性持有 者被释放时一同自动取消。不过，你也完全可以在不需要时提前释放这个变量 或者明确地调用 cancel() 以取消绑定。
+3. 对于 1 的情况，也完全可以将 Cancellable 作为参数传递给 AnyCancellable 的初始化方法，将它包装成为一个可以自动取消的对象。这样一来，1 将被转 换为 2 的情况。
+*/
+
+/// debounce 防抖   Publisher 在接收到第一个值后，并不是立即将它发布出 去，而是会开启一个内部计时器，当一定时间内没有新的事件来到，再将这个值进行 发布
+//let searchText = PassthroughSubject<String, Never>()
+//let debounceCheck = check("Debounce") {
+//    searchText
+//        .debounce(for: .seconds(1), scheduler: RunLoop.main)
+//}
+//let throttleCheck = check("Debounce") {
+//    searchText
+//        .throttle(for: .seconds(1), scheduler: RunLoop.main, latest: false)
+//}
+//delay(0) { searchText.send("S") }
+//delay(0.1) { searchText.send("Sw") }
+//delay(0.2) { searchText.send("Swi") }
+//delay(1.3) { searchText.send("Swif") }
+//delay(1.4) { searchText.send("Swift") }
+
