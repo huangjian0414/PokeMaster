@@ -28,16 +28,17 @@ struct PokemonList: View {
                         }
                 }
             }
-        }.overlay(
-            VStack {
-                Spacer()
-                Button("PokemonInfoPanel") {
-                    self.showPanel = true
-                }.sheet(isPresented: $showPanel) {
-                    PokemonInfoPanel(model: .sample(id: 1))
-                }
-            }.edgesIgnoringSafeArea(.bottom)
-        )
+        }
+//        .overlay(
+//            VStack {
+//                Spacer()
+//                Button("PokemonInfoPanel") {
+//                    self.showPanel = true
+//                }.sheet(isPresented: $showPanel) {
+//                    PokemonInfoPanel(model: .sample(id: 1))
+//                }
+//            }.edgesIgnoringSafeArea(.bottom)
+//        )
     }
 }
 

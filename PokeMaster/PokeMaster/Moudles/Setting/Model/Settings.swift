@@ -9,26 +9,26 @@
 import Foundation
 import SwiftUI
 
-class Settings: ObservableObject {
+//class Settings: ObservableObject {
     /// CaseIterable 协议给枚举的 allCases 属性自动产生所有的枚举的数组
-    enum AccountBehavior: CaseIterable {
-        case register, login
-    }
-    enum Sorting: CaseIterable {
-        case id, name, color, favorite
-    }
+//    enum AccountBehavior: CaseIterable {
+//        case register, login
+//    }
+//    enum Sorting: CaseIterable {
+//        case id, name, color, favorite
+//    }
     
-    @Published var accountBehavior = AccountBehavior.login
-    @Published var email = ""
-    @Published var password = ""
-    @Published var verifyPassword = ""
+//    @Published var accountBehavior = AccountBehavior.login
+//    @Published var email = ""
+//    @Published var password = ""
+//    @Published var verifyPassword = ""
 
-    @Published var showEnglishName = true
-    @Published var sorting = Sorting.id
-    @Published var showFavoriteOnly = false
-}
+//    @Published var showEnglishName = true
+//    @Published var sorting = Sorting.id
+//    @Published var showFavoriteOnly = false
+//}
 
-extension Settings.Sorting {
+extension AppState.Settings.Sorting {
     var text: String {
         switch self {
         case .id:
@@ -43,7 +43,7 @@ extension Settings.Sorting {
     }
     
 }
-extension Settings.AccountBehavior {
+extension AppState.Settings.AccountBehavior {
     var text: String {
         switch self {
         case .register:
