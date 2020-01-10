@@ -11,6 +11,7 @@ import Combine
 
 class Store: ObservableObject {
     @Published var appState = AppState()
+    var futureCan: AnyCancellable?
     
     func dispatch(_ action: AppAction) {
         #if DEBUG

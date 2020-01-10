@@ -331,3 +331,17 @@ import UIKit
 //delay(1.3) { searchText.send("Swif") }
 //delay(1.4) { searchText.send("Swift") }
 
+
+
+let future = Future<Int, SampleError> { promise in
+    DispatchQueue.global().asyncAfter(deadline: .now()+1.5) {
+        promise(.success(2))
+    }
+}
+.eraseToAnyPublisher()
+.sink(receiveCompletion: { (result) in
+    print("1111111")
+}, receiveValue: { (value) in
+    print("2222222")
+})
+
