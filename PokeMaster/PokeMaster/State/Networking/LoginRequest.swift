@@ -27,5 +27,4 @@ struct LoginRequest {
         .receive(on: DispatchQueue.main)
         .eraseToAnyPublisher()
     }
-    
 }

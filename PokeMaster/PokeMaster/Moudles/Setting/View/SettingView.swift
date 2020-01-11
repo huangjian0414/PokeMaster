@@ -53,6 +53,7 @@ struct SettingView: View {
                 Text(settings.loginUser!.email)
                 Button("注销") {
                     print("注销")
+                    self.store.dispatch(.logout)
                 }
             }
         }

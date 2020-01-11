@@ -18,3 +18,17 @@ func ScaleFrame(_ float: CGFloat) -> CGFloat {
 func imgString(_ id: Int) -> String {
     return "Pokemon-\(id)"
 }
+
+
+let format = DateFormatter()
+
+func TTLog<T>(_ message:T,file:String = #file,funcName:String = #function,lineNum:Int = #line){
+    
+    #if DEBUG
+    let date = Date()
+    format.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS Z"
+    let str = format.string(from: date)
+    let file = (file as NSString).lastPathComponent;
+    print("\(str) \(file):(\(lineNum)) \(message)");
+    #endif
+}
