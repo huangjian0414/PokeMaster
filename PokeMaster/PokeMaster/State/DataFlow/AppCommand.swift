@@ -19,19 +19,31 @@ struct LoginAppCommand: AppCommand {
     
     
     func execute(in store: Store) {
-        print("LoginAppCommand")
+        TTLog("LoginAppCommand")
         store.futureCan = LoginRequest(email: email, password: password).publisher
             .sink(receiveCompletion: { (complete) in
-                print("11111")
+                TTLog("11111")
                 if case .failure(let error) = complete {
                     store.dispatch(.accountBehaviorDone(result: .failure(error)))
                     store.futureCan = nil
                 }
             }, receiveValue: { (user) in
-                print("22222")
+                TTLog("22222")
                 store.dispatch(.accountBehaviorDone(result: .success(user)))
                 store.futureCan = nil
             })
     }
+    
+}
+
+struct WriteUserAppCommand: AppCommand {
+    
+    let user: User
+    
+    
+    func execute(in store: Store) {
+        try? FileHelper.writeJSON(user, to: .documentDirectory, fileName: userJson)
+    }
+    
     
 }

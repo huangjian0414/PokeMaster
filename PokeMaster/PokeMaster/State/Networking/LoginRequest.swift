@@ -16,7 +16,7 @@ struct LoginRequest {
     var publisher: AnyPublisher<User, AppError> {
         Future { promise in
             DispatchQueue.global().asyncAfter(deadline: .now() + 1.5) {
-                if self.password == "111111" {
+                if self.password == "111111" { 
                     let user = User(email: self.email, favoritePokemonIDs: [])
                     promise(.success(user))
                 } else {

@@ -54,11 +54,14 @@ class Store: ObservableObject {
             case .success(let user):
                 appstate.settings.loginUser = user
             case .failure(let error):
-                    print("Error: \(error)")
+                TTLog("Error: \(error)")
+                appstate.settings.loginError = error
             }
         case .logout:
             appstate.settings.loginUser = nil
             appstate.settings.password = ""
+            appstate.settings.showEnglishName = false
+            appstate.settings.showFavoriteOnly = false
         }
         return (appstate, appCommand)
     }

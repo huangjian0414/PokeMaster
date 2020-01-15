@@ -25,6 +25,10 @@ struct SettingView: View {
             optionSection
             actionSection
         }
+            ///使用 .alert 来弹出一个 Alert 对话框。alert(item:content:) 接受 一个 Identifiable? 的绑定，当这个绑定值不为 nil 时，显示一个弹框。用户在点击弹 框按钮 dismiss 弹框时，绑定值将被置回 nil
+        .alert(item: settingsBinding.loginError) { (error) -> Alert in
+            Alert(title: Text(error.localizedDescription))
+        }
     }
 
     var accountSection: some View {
@@ -41,8 +45,9 @@ struct SettingView: View {
                 if settings.accountBehavior == .register {
                     SecureField("确认密码", text: settingsBinding.verifyPassword)
                 }
+                
                 if settings.loginRequesting {
-                    Text("登录中....")
+                    ActivityIndicatorView()
                 }else{
                     Button(settings.accountBehavior.text) {
                         print("登录/注册")
@@ -83,6 +88,10 @@ struct SettingView: View {
                 Text("清空缓存").foregroundColor(.red)
             }
         }
+    }
+    
+    var activityIndicatorView: some UIView {
+        UIActivityIndicatorView(style: .large)
     }
     
     

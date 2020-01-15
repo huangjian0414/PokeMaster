@@ -95,6 +95,10 @@
 		7E5B4B3C23C33129009BBC4A /* PokemonInfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5B4B3B23C33129009BBC4A /* PokemonInfoRow.swift */; };
 		7E5B4B3E23C33B0F009BBC4A /* PokemonInfoPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5B4B3D23C33B0F009BBC4A /* PokemonInfoPanel.swift */; };
 		7E5B4B4123C33D32009BBC4A /* PokemonInfoPanelHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5B4B4023C33D32009BBC4A /* PokemonInfoPanelHeader.swift */; };
+		7E5F92A923CEF63E008E630D /* AppConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F92A823CEF63E008E630D /* AppConst.swift */; };
+		7E5F92AC23CEF813008E630D /* FileStorege.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F92AB23CEF813008E630D /* FileStorege.swift */; };
+		7E5F92AE23CF07FA008E630D /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F92AD23CF07FA008E630D /* ActivityIndicatorView.swift */; };
+		7E5F92B123CF1097008E630D /* UserDefaultsStorege.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F92B023CF1097008E630D /* UserDefaultsStorege.swift */; };
 		7E83A28123C7325A00F94964 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83A28023C7325A00F94964 /* User.swift */; };
 		7E83A28323C734C100F94964 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83A28223C734C100F94964 /* AppAction.swift */; };
 		7E83A28623C7434200F94964 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83A28523C7434200F94964 /* LoginRequest.swift */; };
@@ -196,6 +200,10 @@
 		7E5B4B3B23C33129009BBC4A /* PokemonInfoRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonInfoRow.swift; sourceTree = "<group>"; };
 		7E5B4B3D23C33B0F009BBC4A /* PokemonInfoPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonInfoPanel.swift; sourceTree = "<group>"; };
 		7E5B4B4023C33D32009BBC4A /* PokemonInfoPanelHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonInfoPanelHeader.swift; sourceTree = "<group>"; };
+		7E5F92A823CEF63E008E630D /* AppConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConst.swift; sourceTree = "<group>"; };
+		7E5F92AB23CEF813008E630D /* FileStorege.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorege.swift; sourceTree = "<group>"; };
+		7E5F92AD23CF07FA008E630D /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		7E5F92B023CF1097008E630D /* UserDefaultsStorege.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorege.swift; sourceTree = "<group>"; };
 		7E83A28023C7325A00F94964 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7E83A28223C734C100F94964 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 		7E83A28523C7434200F94964 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
@@ -229,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				7E5599A923C425FE0000F610 /* SettingView.swift */,
+				7E5F92AD23CF07FA008E630D /* ActivityIndicatorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -269,6 +278,7 @@
 		7E5B4A7F23C31653009BBC4A /* PokeMaster */ = {
 			isa = PBXGroup;
 			children = (
+				7E5F92A723CEF62D008E630D /* Const */,
 				7EAFF31A23C71D2D00F8767F /* State */,
 				7E5B4B3223C32240009BBC4A /* Config */,
 				7E5B4B2A23C31AF6009BBC4A /* Moudles */,
@@ -492,6 +502,30 @@
 			path = Panel;
 			sourceTree = "<group>";
 		};
+		7E5F92A723CEF62D008E630D /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				7E5F92A823CEF63E008E630D /* AppConst.swift */,
+			);
+			path = Const;
+			sourceTree = "<group>";
+		};
+		7E5F92AA23CEF7F6008E630D /* FileIO */ = {
+			isa = PBXGroup;
+			children = (
+				7E5F92AB23CEF813008E630D /* FileStorege.swift */,
+			);
+			path = FileIO;
+			sourceTree = "<group>";
+		};
+		7E5F92AF23CF1072008E630D /* UserDefaultsIO */ = {
+			isa = PBXGroup;
+			children = (
+				7E5F92B023CF1097008E630D /* UserDefaultsStorege.swift */,
+			);
+			path = UserDefaultsIO;
+			sourceTree = "<group>";
+		};
 		7E83A28423C7432F00F94964 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -503,6 +537,8 @@
 		7EAFF31A23C71D2D00F8767F /* State */ = {
 			isa = PBXGroup;
 			children = (
+				7E5F92AF23CF1072008E630D /* UserDefaultsIO */,
+				7E5F92AA23CEF7F6008E630D /* FileIO */,
 				7E83A28423C7432F00F94964 /* Networking */,
 				7EAFF31B23C71D4900F8767F /* DataFlow */,
 			);
@@ -671,11 +707,14 @@
 				7E5B4A8123C31653009BBC4A /* AppDelegate.swift in Sources */,
 				7E5B4A8323C31653009BBC4A /* SceneDelegate.swift in Sources */,
 				7E5B4B2823C3180B009BBC4A /* Pokemon.swift in Sources */,
+				7E5F92A923CEF63E008E630D /* AppConst.swift in Sources */,
 				7E5B4B2723C3180B009BBC4A /* Ability.swift in Sources */,
 				7E5B4A8523C31653009BBC4A /* ContentView.swift in Sources */,
+				7E5F92AC23CEF813008E630D /* FileStorege.swift in Sources */,
 				7E5B4B2523C3180B009BBC4A /* PokemonViewModel.swift in Sources */,
 				7EAFF31D23C71D6200F8767F /* AppState.swift in Sources */,
 				7E5B4B2123C3180B009BBC4A /* FileHelper.swift in Sources */,
+				7E5F92B123CF1097008E630D /* UserDefaultsStorege.swift in Sources */,
 				7E5599AD23C42A7C0000F610 /* SettingRootView.swift in Sources */,
 				7E83A28323C734C100F94964 /* AppAction.swift in Sources */,
 				7E5599A823C423A80000F610 /* Settings.swift in Sources */,
@@ -685,6 +724,7 @@
 				7E5599A423C41FE50000F610 /* BlurView.swift in Sources */,
 				7E5B4B3C23C33129009BBC4A /* PokemonInfoRow.swift in Sources */,
 				7E5599A123C41CBB0000F610 /* PokemonInfoPanelAbilityList.swift in Sources */,
+				7E5F92AE23CF07FA008E630D /* ActivityIndicatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
