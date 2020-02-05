@@ -11,8 +11,17 @@ import Combine
 
 class Store: ObservableObject {
     @Published var appState = AppState()
-    var futureCan: AnyCancellable?
     
+    let bag = DisposeBag()
+    
+    init() {
+        setupObservers()
+    }
+    func setupObservers() {
+        appState.settings.checker.isEmailValid.sink(receiveValue: { (isValid) in
+            self.dispatch(.emailValid(valid: isValid))
+        }).add(to: bag)
+    }
     func dispatch(_ action: AppAction) {
         #if DEBUG
         print("[ACTION]: \(action)")
@@ -59,10 +68,26 @@ class Store: ObservableObject {
             }
         case .logout:
             appstate.settings.loginUser = nil
-            appstate.settings.password = ""
+            appstate.settings.checker.password = ""
             appstate.settings.showEnglishName = false
             appstate.settings.showFavoriteOnly = false
+        case .emailValid(let valid):
+            appstate.settings.isEmailValid = valid
         }
         return (appstate, appCommand)
+    }
+}
+
+
+class DisposeBag {
+    private var values: [AnyCancellable] = []
+    func add(_ value: AnyCancellable) {
+        values.append(value)
+    }
+}
+
+extension AnyCancellable {
+    func add(to bag: DisposeBag) {
+        bag.add(self)
     }
 }

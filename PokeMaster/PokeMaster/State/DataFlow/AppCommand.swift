@@ -17,21 +17,18 @@ struct LoginAppCommand: AppCommand {
     let email: String
     let password: String
     
-    
     func execute(in store: Store) {
         TTLog("LoginAppCommand")
-        store.futureCan = LoginRequest(email: email, password: password).publisher
+        LoginRequest(email: email, password: password).publisher
             .sink(receiveCompletion: { (complete) in
                 TTLog("11111")
                 if case .failure(let error) = complete {
                     store.dispatch(.accountBehaviorDone(result: .failure(error)))
-                    store.futureCan = nil
                 }
             }, receiveValue: { (user) in
                 TTLog("22222")
                 store.dispatch(.accountBehaviorDone(result: .success(user)))
-                store.futureCan = nil
-            })
+            }).add(to: store.bag)
     }
     
 }

@@ -107,6 +107,7 @@
 		7EAFF31923C7133500F8767F /* MainTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFF31823C7133500F8767F /* MainTab.swift */; };
 		7EAFF31D23C71D6200F8767F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFF31C23C71D6200F8767F /* AppState.swift */; };
 		7EAFF31F23C71D6C00F8767F /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EAFF31E23C71D6C00F8767F /* Store.swift */; };
+		873233EB23EA887200C4DED0 /* EmailCheckingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873233EA23EA887200C4DED0 /* EmailCheckingRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -212,6 +213,7 @@
 		7EAFF31823C7133500F8767F /* MainTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTab.swift; sourceTree = "<group>"; };
 		7EAFF31C23C71D6200F8767F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		7EAFF31E23C71D6C00F8767F /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		873233EA23EA887200C4DED0 /* EmailCheckingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckingRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -530,6 +532,7 @@
 			isa = PBXGroup;
 			children = (
 				7E83A28523C7434200F94964 /* LoginRequest.swift */,
+				873233EA23EA887200C4DED0 /* EmailCheckingRequest.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -692,6 +695,7 @@
 			files = (
 				7E5599AF23C42B5E0000F610 /* PokemonListRootView.swift in Sources */,
 				7E5B4B2923C3180B009BBC4A /* PokemonSpecies.swift in Sources */,
+				873233EB23EA887200C4DED0 /* EmailCheckingRequest.swift in Sources */,
 				7E83A28A23C74A1100F94964 /* AppCommand.swift in Sources */,
 				7E83A28823C7489600F94964 /* AppError.swift in Sources */,
 				7E5B4B2423C3180B009BBC4A /* AbilityViewModel.swift in Sources */,
