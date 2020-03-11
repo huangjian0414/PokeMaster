@@ -35,7 +35,7 @@ struct PokemonViewModel: Identifiable, Codable {
     }
 
     var iconImageURL: URL {
-        URL(string: "https://raw.githubusercontent.com/onevcat/pokemaster-images/master/images/Pokemon-\(id).png")!
+        URL(string: "https://raw.githubusercontent.com/huangjian0414/PokeMaster/master/PokemonImage/Pokemon-\(id).png")!
     }
 
     var detailPageURL: URL {

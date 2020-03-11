@@ -15,7 +15,8 @@ struct PokemonInfoRow: View {
     var body: some View {
         VStack {
             HStack {
-                Image(imgString(model.id))
+                KFImage(model.iconImageURL)
+                    .placeholder{Image("defaultImg")}
                     ///按照所在的 frame 缩放
                     .resizable()
                     .frame(width: ScaleFrame(50), height: ScaleFrame(50))
