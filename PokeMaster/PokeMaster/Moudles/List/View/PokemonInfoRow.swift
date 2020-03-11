@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-
+import KingfisherSwiftUI
 struct PokemonInfoRow: View {
     let model: PokemonViewModel
     let expanded: Bool
