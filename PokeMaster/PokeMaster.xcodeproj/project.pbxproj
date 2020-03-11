@@ -99,6 +99,7 @@
 		7E5F92AC23CEF813008E630D /* FileStorege.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F92AB23CEF813008E630D /* FileStorege.swift */; };
 		7E5F92AE23CF07FA008E630D /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F92AD23CF07FA008E630D /* ActivityIndicatorView.swift */; };
 		7E5F92B123CF1097008E630D /* UserDefaultsStorege.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5F92B023CF1097008E630D /* UserDefaultsStorege.swift */; };
+		7E61BAA92418C99600F717FF /* LoadPokemonRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E61BAA82418C99600F717FF /* LoadPokemonRequest.swift */; };
 		7E83A28123C7325A00F94964 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83A28023C7325A00F94964 /* User.swift */; };
 		7E83A28323C734C100F94964 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83A28223C734C100F94964 /* AppAction.swift */; };
 		7E83A28623C7434200F94964 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E83A28523C7434200F94964 /* LoginRequest.swift */; };
@@ -205,6 +206,7 @@
 		7E5F92AB23CEF813008E630D /* FileStorege.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorege.swift; sourceTree = "<group>"; };
 		7E5F92AD23CF07FA008E630D /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		7E5F92B023CF1097008E630D /* UserDefaultsStorege.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorege.swift; sourceTree = "<group>"; };
+		7E61BAA82418C99600F717FF /* LoadPokemonRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPokemonRequest.swift; sourceTree = "<group>"; };
 		7E83A28023C7325A00F94964 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7E83A28223C734C100F94964 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 		7E83A28523C7434200F94964 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
@@ -533,6 +535,7 @@
 			children = (
 				7E83A28523C7434200F94964 /* LoginRequest.swift */,
 				873233EA23EA887200C4DED0 /* EmailCheckingRequest.swift */,
+				7E61BAA82418C99600F717FF /* LoadPokemonRequest.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				7E5B4B2623C3180B009BBC4A /* Language.swift in Sources */,
 				7E5B4B3E23C33B0F009BBC4A /* PokemonInfoPanel.swift in Sources */,
 				7E5B4A8123C31653009BBC4A /* AppDelegate.swift in Sources */,
+				7E61BAA92418C99600F717FF /* LoadPokemonRequest.swift in Sources */,
 				7E5B4A8323C31653009BBC4A /* SceneDelegate.swift in Sources */,
 				7E5B4B2823C3180B009BBC4A /* Pokemon.swift in Sources */,
 				7E5F92A923CEF63E008E630D /* AppConst.swift in Sources */,

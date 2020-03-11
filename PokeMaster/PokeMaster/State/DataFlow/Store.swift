@@ -73,7 +73,22 @@ class Store: ObservableObject {
             appstate.settings.showFavoriteOnly = false
         case .emailValid(let valid):
             appstate.settings.isEmailValid = valid
+        case .loadPokemons:
+            if appstate.pokemonList.loadingPokemons {
+            break
+            }
+            appstate.pokemonList.loadingPokemons = true
+            appCommand = LoadPokemonsCommand()
+        case .loadPokemonsDone(let result):
+            switch result {
+            case .success(let models):
+                appstate.pokemonList.pokemons =
+                    Dictionary(uniqueKeysWithValues: models.map { ($0.id, $0) } )
+            case .failure(let error):
+                print(error)
+            }
         }
+        
         return (appstate, appCommand)
     }
 }

@@ -13,12 +13,15 @@ struct PokemonList: View {
     @State var expandingIndex: Int?
     @State var searchText: String = ""
     @State var showPanel = false
+    
+    @EnvironmentObject var store: Store
+    
     var body: some View {
         ScrollView {
             TextField ("搜索", text: $searchText)
                 .frame(height: ScaleFrame(40))
                 .padding(.horizontal, ScaleFrame(25))
-            ForEach(PokemonViewModel.all) { pokemon in
+            ForEach(store.appState.pokemonList.allPokemonsByID) { pokemon in
                 PokemonInfoRow(model: pokemon, expanded: self.expandingIndex == pokemon.id)
                     .onTapGesture {
                         if self.expandingIndex == pokemon.id {

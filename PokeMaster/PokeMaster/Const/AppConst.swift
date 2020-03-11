@@ -9,6 +9,7 @@
 import Foundation
 
 let userJson = "user.json"
+let pokemonsJson = "pokemons.json"
 
 let kIsShowEnglishName = "isShowEnglishName"
 let kIsShowFavoriteOnly = "isShowFavoriteOnly"
